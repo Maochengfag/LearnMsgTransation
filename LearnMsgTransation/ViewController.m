@@ -7,6 +7,7 @@
 //
 
 #import "ViewController.h"
+#import "PersonModel.h"
 
 @interface ViewController ()
 
@@ -17,6 +18,18 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
+    PersonModel *personModel = [[PersonModel alloc] init];
+    
+    //    //消息转发  resolveInstanceMethod
+    personModel.name = @"Jim Green";
+    NSString *name = personModel.name;
+    NSLog(@" %@", name);
+    //消息转发 forwardingTargetForSelector
+    NSString *name1 = [personModel companyName];
+    NSLog(@" %@", name1);
+    //    //消息转发 forwardInvocation
+    NSString *name2 = [personModel deptName];
+    NSLog(@" %@", name2);
 }
 
 
